@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interactive</title> <!--Optional in some areas-->
+</head>
+<body>
+    <h1 style="font-family: Arial; border-bottom: solid 5px; border-bottom-color: red;">Interactive button example</h1> <!--Optional-->
+    <!--<h1 style="font-family: Arial;">Want to know my name?</h1>--><!--If using header, this is a simple one. Uncomment this one if you want.-->
+    <button onclick="showConfirmation()">Click me</button> <!--Best to change the text-->
+    <p id="ok" style="font-family: Arial;">Click button for example to work.</p> <!--Not Optional, change initial text-->
+
+    <script>
+        function showConfirmation() {
+            // Display confirmation popup
+            if (confirm("Are you sure you want to proceed?")) { //Question. In Chrome, followed by OK and Cancel. In CodeRunner, just OK.
+                alert("You clicked OK!"); //Alert User [Popup]
+                document.getElementById("ok").innerHTML = 
+                "You Clicked Ok!"; //Change Text below button
+            } else {
+                alert("You clicked Cancel!"); //Alert User [Popup]
+                document.getElementById("ok").innerHTML = 
+                "You Clicked Cancel!"; //Change Text below button
+            }
+        }
+    </script>
+    <br>
+    <br>
+    <p style="font-family: Arial;">My Code:</p>
+    <br>
+        <div id="text-container" style="font-family: Arial;">
+        Loading text file...
+    </div>
+    
+    <script>
+        // Function to retrieve and display the text file
+        async function loadTextFile() {
+            try {
+                const response = await fetch('/txt/p1.txt'); // Update the path as needed
+                if (response.ok) {
+                    const text = await response.text();
+                    document.getElementById('text-container').textContent = text;
+                } else {
+                    document.getElementById('text-container').textContent = 'The file is corrupted.';
+                }
+            } catch (error) {
+                console.error('Error fetching file:', error);
+                document.getElementById('text-container').textContent = 'The file was lost.';
+            }
+        }
+        
+        // Call the function to load the text file
+        loadTextFile();
+    </script>
+
+</body>
+</html>
