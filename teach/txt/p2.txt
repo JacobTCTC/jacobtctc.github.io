@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <title>Window Popup Example</title>
+  <body style="font-family: Arial;">
+    <h1 style="border-bottom: solid red 4px;">Interactive Popup Example</h1>
+    <button onclick="window.open('https://jacobtctc.github.io/', '', 'width=700,height=500');">Try Me!</button> <!-- That's the popup -->
+    <!--On Click of Button, Window Open, or open window to our knowledge, that has https://jacobtctc.github.io/ in it, with a width of 
+    700 and a height of 500-->
+  </body>
+</html>
