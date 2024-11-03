@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <title>Window Popup Example</title>
+  <br>
+  <body style="font-family: Arial;">
+    <h1 style="border-bottom: solid red 4px;">Interactive Popup Example</h1>
+    <button onclick="window.open('https://jacobtctc.github.io/', '', 'width=700,height=500');">Try Me!</button> <!-- That's the popup -->
+    <!--On Click of Button, Window Open, or open window to our knowledge, that has https://jacobtctc.github.io/ in it, with a width of 
+    700 and a height of 500-->
+    <br>
+    <h2 style="border-bottom: solid black 4px;">My Code:</h2>
+
+      <pre id="text-container" style="font-family: Arial;">
+        Loading text file...
+    </pre>
+    
+    <script>
+        // Function to retrieve and display the text file
+        async function loadTextFile() {
+            try {
+                const response = await fetch('/teach/txt/p2.txt'); // Update the path as needed
+                if (response.ok) {
+                    const text = await response.text();
+                    document.getElementById('text-container').textContent = text;
+                } else {
+                    document.getElementById('text-container').textContent = 'The file is corrupted.';
+                }
+            } catch (error) {
+                console.error('Error fetching file:', error);
+                document.getElementById('text-container').textContent = 'The file was lost.';
+            }
+        }
+        
+        // Call the function to load the text file
+        loadTextFile();
+    </script>
+
+</html>
