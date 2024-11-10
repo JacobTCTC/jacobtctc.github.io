@@ -1,0 +1,35 @@
+<html lang="en">  <!-- Good thing to define EN -->
+<body>
+     <pre id="text-container" style="font-family: Arial;"> <!-- This allows the TXT File to be shown, with formatting -->
+        Loading text file...
+    </pre>
+
+   <!-- <div id="text-container" style="font-family: Arial;"> <!-- This allows the TXT File to be shown, without formatting -->
+        Loading text file...
+    </div> -->
+
+    <!-- "Loading text file" is a placeholder, allowing the User to know that the file is being retreived -->
+    
+    <script>
+        // Function to retrieve and display the text file
+        async function loadTextFile() {
+            try { // Try to show TXT, or return Error to Viewer
+                const response = await fetch('/teach/txt/p3.txt');   // Update the path as needed
+                if (response.ok) {
+                    const text = await response.text();
+                    document.getElementById('text-container').textContent = text;  //Success
+                } else {
+                    document.getElementById('text-container').textContent = 'The file is corrupted.';   //Found, but couldn't Read
+                }
+            } catch (error) {  //File specified is missing.
+                console.error('Error fetching file:', error);  //Log in the Console [inspector console]
+                document.getElementById('text-container').textContent = 'The file was lost.';   //Return Error to Viewer
+            }
+        }
+        
+        // Call the function to load the text file
+        loadTextFile();
+    </script>
+
+</body>
+</html>
