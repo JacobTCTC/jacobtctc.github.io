@@ -1,11 +1,11 @@
 <html lang="en">  <!-- Good thing to define EN -->
 <body>
      <pre id="text-container" style="font-family: Arial;"> <!-- This allows the TXT File to be shown, with formatting -->
-        Loading text file...
+        <p>Loading text file...</p>
     </pre>
 
    <!-- <div id="text-container" style="font-family: Arial;"> <!-- This allows the TXT File to be shown, without formatting -->
-        Loading text file...
+        <p>Loading text file...</p>
     </div> -->
 
     <!-- "Loading text file" is a placeholder, allowing the User to know that the file is being retreived -->
