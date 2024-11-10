@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<title>HTML Text Fetch</title>
+<html lang="en">
+  <body style="font-family: Arial;">
+    <h1 style="border_bottom: solid red 5px>What's below is the TXT file that loaded in. This requires a server.</h1>
+         <pre id="text-container" style="font-family: Arial;">
+        Loading text file...
+    </pre>
+    
+    <script>
+        // Function to retrieve and display the text file
+        async function loadTextFile() {
+            try {
+                const response = await fetch('/teach/txt/p3.txt'); // Update the path as needed
+                if (response.ok) {
+                    const text = await response.text();
+                    document.getElementById('text-container').textContent = text;
+                } else {
+                    document.getElementById('text-container').textContent = 'The file is corrupted.';
+                }
+            } catch (error) {
+                console.error('Error fetching file:', error);
+                document.getElementById('text-container').textContent = 'The file was lost.';
+            }
+        }
+        
+        // Call the function to load the text file
+        loadTextFile();
+    </script>
+
+</body>
+</html>
