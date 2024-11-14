@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Login Cookie and Redirect</title>
+    <script>
+        // Function to set a cookie with a specific name, value, and expiration time
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Setting the "login" cookie with the code from the textbox, then redirecting
+        function createLoginCookieAndRedirect() {
+            const loginCode = document.getElementById("logcode").value; // Get code from text box
+            if (loginCode) {
+                const expiryDays = 1; // Set the number of days until the cookie expires
+                setCookie("login", loginCode, expiryDays);
+                alert("Login cookie set with code: " + loginCode);
+                // Redirect to the target URL
+                window.location.href = "https://jacobtctc.github.io/webwall/";
+            } else {
+                alert("Please enter a login code.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Login Cookie Creator</h1>
+    <p>Enter your login code and click "Set Cookie & Redirect" to create the login cookie and proceed.</p>
+    
+    <input type="text" id="logcode" placeholder="Enter login code" />
+    <button onclick="createLoginCookieAndRedirect()">Set Cookie & Redirect</button>
+</body>
+</html>
