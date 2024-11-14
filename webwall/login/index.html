@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Set Login Cookie and Redirect</title>
+    <title>Login to Webwall</title>
     <script>
         // Function to set a cookie with a specific name, value, and expiration time
         function setCookie(name, value, days) {
@@ -22,7 +22,7 @@
             if (loginCode) {
                 const expiryDays = 1; // Set the number of days until the cookie expires
                 setCookie("login", loginCode, expiryDays);
-                alert("Login cookie set with code: " + loginCode);
+                //alert("Login cookie set with code: " + loginCode);
                 // Redirect to the target URL
                 window.location.href = "https://jacobtctc.github.io/webwall/";
             } else {
@@ -32,10 +32,11 @@
     </script>
 </head>
 <body>
-    <h1>Login Cookie Creator</h1>
-    <p>Enter your login code and click "Set Cookie & Redirect" to create the login cookie and proceed.</p>
+    <h1>Login</h1>
+    <p>Enter your login code.</p>
     
     <input type="text" id="logcode" placeholder="Enter login code" />
-    <button onclick="createLoginCookieAndRedirect()">Set Cookie & Redirect</button>
+    <br>
+    <button onclick="createLoginCookieAndRedirect()">Login</button>
 </body>
 </html>
