@@ -1,43 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="https://jacobtctc.github.io/ico.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login to Webwall</title>
-    <script>
-        // Function to set a cookie with a specific name, value, and expiration time
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="https://jacobtctc.github.io/ico.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Login to Webwall</title>
+		<script>
+			// Function to set a cookie with a specific name, value, and expiration time
+			function setCookie(name, value, days) {
+				let expires = "";
+				if (days) {
+					const date = new Date();
+					date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+					expires = "; expires=" + date.toUTCString();
+				}
+				document.cookie = name + "=" + (value || "") + expires + "; path=/";
+			}
+			
+			// Setting the "login" cookie with the code from the textbox, then redirecting
+			function createLoginCookieAndRedirect() {
+				const loginCode = document.getElementById("logcode").value; // Get code from text box
+				if (loginCode) {
+					const expiryDays = 1; // Set the number of days until the cookie expires
+					setCookie("login", loginCode, expiryDays);
+					//alert("Login cookie set with code: " + loginCode);
+					// Redirect to the target URL
+					window.location.href = "https://jacobtctc.github.io/webwall/";
+				} else {
+					alert("Please enter a login code.");
+				}
+			}
+		</script>
 
-        // Setting the "login" cookie with the code from the textbox, then redirecting
-        function createLoginCookieAndRedirect() {
-            const loginCode = document.getElementById("logcode").value; // Get code from text box
-            if (loginCode) {
-                const expiryDays = 1; // Set the number of days until the cookie expires
-                setCookie("login", loginCode, expiryDays);
-                //alert("Login cookie set with code: " + loginCode);
-                // Redirect to the target URL
-                window.location.href = "https://jacobtctc.github.io/webwall/";
-            } else {
-                alert("Please enter a login code.");
-            }
-        }
-    </script>
-</head>
-<body style="font-family: Arial;">
-    <h1>Login</h1>
-    <p>Enter your login code.</p>
-    
-    <input type="text" id="logcode" placeholder="Enter login code" />
-    <br>
-    <button onclick="createLoginCookieAndRedirect()">Login</button>
-</body>
+	</head>
+	<style>
+		body {
+			font-family: Arial, sans-serif; /* Set Arial font for the entire body */
+			text-align: center; /* Center align content */
+		}
+		#pinEntry {
+			margin: 20px auto; /* Center pinEntry div */
+			width: 80%; /* Adjust width as needed */
+			max-width: 500px; /* Limit maximum width */
+			border: 4px solid #ccc;
+			padding: 20px;
+			border-radius: 8px;
+			background-color: #f9f9f9;
+		}
+		#pinForm {
+			margin-top: 10px;
+		}
+	</style>
+	
+	<body style="font-family: Arial;">
+			<div id="pinEntry">
+				<img src="https://jacobtctc.github.io/img.png" alt="Login Graphic" style="max-width:40%; border-radius: 3px;">
+				<h1>WebWall Access</h1>
+				<p>Enter your login code. This had been given to you by JacobTCTC.</p>
+				
+				<input type="text" id="logcode" placeholder="Enter login code" />
+				<br>
+				<button style="background: lightblue;" onclick="createLoginCookieAndRedirect()">Login</button>
+				<br>
+				<a href="mailto:jacobbutcher28@outlook.com"><button style="background: tomato;">Request Reset</button></a>
+			</div>
+	</body>
 </html>
