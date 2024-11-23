@@ -18,7 +18,7 @@
 			
 			// Setting the "login" cookie with the code from the textbox, then redirecting
 			function createLoginCookieAndRedirect() {
-				const loginCode = "google_guest" // Get code from text box
+				const loginCode = google_guest // Get code from text box
 				if (loginCode) {
 					const expiryDays = 1; // Set the number of days until the cookie expires
 					setCookie("login", loginCode, expiryDays);
